@@ -18,6 +18,7 @@ response = requests.get(
 if response.status_code == 200:
     # Parse the JSON data
     data = response.json()
+    print(json.dumps(data, indent=4))
     # Get the first track in the list of results
     track = data["results"][0]
     # Get the track title

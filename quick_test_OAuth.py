@@ -26,15 +26,25 @@ while not access_granted:
 
 print("\nYou are identified as", d.identity())
 
-results = d.search('Stockholm By Night', type='release')
-print(results)
-print("\n")
+results = d.search('passion phaxe', type='release')
 
-print(results.pages)
-print("\n")
+n_pages = results.pages
+page1 = results.page(1)
 
-artist = results[0].artists[0]
-print(artist)
-print("\n")
+track = results[0]
+properties = ['artists', 'artists_sort', 'changes', 'client', 'community', 
+    'companies', 'country', 'credits', 'data', 'data_quality', 'delete', 
+    'fetch', 'formats', 'genres', 'id', 'images', 'labels', 'marketplace_stats', 
+    'master', 'notes', 'previous_request', 'price_suggestions', 'refresh', 'save', 
+    'status', 'styles', 'thumb', 'title', 'tracklist', 'url', 'videos', 'year']
 
-print(artist.name)
+title = track.title
+artists = track.artists
+year = track.year
+country = track.country
+genres = track.genres
+styles = track.styles
+url_cover = track.images[0]["resource_url"]
+labels = track.labels
+
+print("\nHere is the result of your request on Discogs:\n", title, artists, year, country, genres, styles, url_cover, labels, sep="\n")
