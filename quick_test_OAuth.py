@@ -3,14 +3,22 @@
 # https://python3-discogs-client.readthedocs.io/en/latest/authentication.html#user-token-authentication
 
 import discogs_client
+import configparser
 
+# Load the consumer key and secret from the configuration file
+config = configparser.ConfigParser()
+config.read("./config.ini")
+consumer_key = config["DEFAULT"]["consumer_key"]
+consumer_secret = config["DEFAULT"]["consumer_secret"]
+
+# Create the interface to use the Discogs API
 d = discogs_client.Client(
     'get-tracks-genres/1.0',
-    consumer_key='CedjvXvMatXFkOOPzbij',
-    consumer_secret='UJYOHeOtuoXcfLoxgZyvbsVaCCibwjkr'
+    consumer_key=consumer_key,
+    consumer_secret=consumer_secret
 )
 
-request_token, request_secret, authorize_url = d.get_authorize_url()
+_, _, authorize_url = d.get_authorize_url()
 print("\n", authorize_url)
 
 # authorize_url must be opened to get the verifier code --> user accepts your app’s request to sign in on their behalf
@@ -19,7 +27,7 @@ access_granted = False
 while not access_granted:
     verifier_code = input("Copy/Paste the code that was given to you: ")
     try:
-        access_token, access_secret = d.get_access_token(verifier_code)
+        _, _ = d.get_access_token(verifier_code)
         access_granted = True
     except:
         print("The code is incorrect. Please try again.\n")

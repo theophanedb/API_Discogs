@@ -3,8 +3,15 @@
 # https://python3-discogs-client.readthedocs.io/en/latest/authentication.html#user-token-authentication
 
 import discogs_client
+import configparser
 
-d = discogs_client.Client('get-tracks-genres/1.0', user_token="CGjeLVVheewKeQqLFoMtnXUNPXoIIfqJDxrObpTh")
+# Load the user token from the configuration file
+config = configparser.ConfigParser()
+config.read("./config.ini")
+user_token = config["DEFAULT"]["user_token"]
+
+# Create the interface to use the Discogs API
+d = discogs_client.Client('get-tracks-genres/1.0', user_token=user_token)
 
 print("\nYou are identified as", d.identity())
 

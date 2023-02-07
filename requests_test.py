@@ -1,9 +1,14 @@
 import requests
 import json
+import configparser
 
-# Replace <user_token> with your own Discogs API user token
+# Load the user token from the configuration file
+config = configparser.ConfigParser()
+config.read("./config.ini")
+user_token = config["DEFAULT"]["user_token"]
+
 headers = {
-    "Authorization": "Discogs token=CGjeLVVheewKeQqLFoMtnXUNPXoIIfqJDxrObpTh",
+    "Authorization": "Discogs token="+user_token,
     "User-Agent": "get-tracks-genres/1.0"
 }
 
