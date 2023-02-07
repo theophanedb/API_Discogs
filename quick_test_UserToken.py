@@ -1,7 +1,3 @@
-# https://github.com/joalla/discogs_client
-# pip3 install python3-discogs-client
-# https://python3-discogs-client.readthedocs.io/en/latest/authentication.html#user-token-authentication
-
 import discogs_client
 import configparser
 
