@@ -9,7 +9,7 @@ consumer_secret = config["DEFAULT"]["consumer_secret"]
 
 # Create the interface to use the Discogs API
 d = discogs_client.Client(
-    'get-tracks-genres/1.0',
+    'Get-Genre-of-Tracks/1.0',
     consumer_key=consumer_key,
     consumer_secret=consumer_secret
 )

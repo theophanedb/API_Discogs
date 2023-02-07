@@ -7,7 +7,7 @@ config.read("./config.ini")
 user_token = config["DEFAULT"]["user_token"]
 
 # Create the interface to use the Discogs API
-d = discogs_client.Client('get-tracks-genres/1.0', user_token=user_token)
+d = discogs_client.Client('Get-Genre-of-Tracks/1.0', user_token=user_token)
 
 print("\nYou are identified as", d.identity())
 

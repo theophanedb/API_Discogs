@@ -9,7 +9,7 @@ user_token = config["DEFAULT"]["user_token"]
 
 headers = {
     "Authorization": "Discogs token="+user_token,
-    "User-Agent": "get-tracks-genres/1.0"
+    "User-Agent": "Get-Genre-of-Tracks/1.0"
 }
 
 # Search for tracks with the specified query
